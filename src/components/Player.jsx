@@ -3,6 +3,9 @@ import { useState } from "react";
 export default function Player({ name, symbol }) {
   const [isEditting, setIsEditting] = useState(false);
 
+  let buttonName = "Edit";
+  let playerName = <span className="player-name">{name}</span>;
+
   function handleEditClick() {
     if (isEditting) {
       setIsEditting(false);
@@ -10,9 +13,6 @@ export default function Player({ name, symbol }) {
       setIsEditting(true);
     }
   }
-
-  let buttonName = "Edit";
-  let playerName = <span className="player-name">{name}</span>;
 
   if (isEditting) {
     playerName = <input type="text" required />;
