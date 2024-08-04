@@ -4,25 +4,21 @@ export default function Player({ initialName, symbol }) {
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditting, setIsEditting] = useState(false);
 
-  let edittablePlayerName = <span className="player-name">{name}</span>;
+  let edittablePlayerName = <span className="player-name">{playerName}</span>;
 
   function handleEditClick() {
+    setIsEditting((edittingState) => !edittingState);
+  }
 
-    // if (isEditting) {
-    //   setIsEditting(false);
-    // } else {
-    //   setIsEditting(true);
-    // }
-
-    // {isEditting ? setIsEditting(false) : setIsEditting(true)}
-
-    // setIsEditting(isEditting ? false : true);
-
-    setIsEditting((edittingState) => !edittingState) // Ideal way to do (Instantanious)
+  function handleChange(event) {
+    console.log(event.target.value);
+    setPlayerName(event.target.value);
   }
 
   if (isEditting) {
-    edittablePlayerName = <input type="text" required value={edittablePlayerName} />;
+    edittablePlayerName = (
+      <input type="text" required value={playerName} onChange={handleChange} />
+    );
   }
 
   return (
