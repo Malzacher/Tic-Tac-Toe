@@ -1,8 +1,11 @@
-export default function Log(rowPosition, colPosition) {
-    
-  return (
-    <ol id="log">
-
-    </ol>
-  );
-}
+export default function Log({turns}) {
+    return (
+      <ol id="log">
+        {turns.map((turn, index) => (
+          <li key={index}>
+            {turn.player} selected: {turn.square[0]}, {turn.square[1]}
+          </li>
+        ))}
+      </ol>
+    );
+  }
